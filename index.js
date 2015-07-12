@@ -34,7 +34,7 @@ var req = client.livetv.allowed_channels.get().then(function (data) {
       var streamUrl = data.body.url
       console.log('.. stream found', streamUrl)
       console.log('.. booting castnow')
-      return spawn('node_modules/castnow/index.js', [streamUrl].concat(options), { stdio: 'inherit' })
+      return spawn(require.resolve('castnow'), [streamUrl].concat(options), { stdio: 'inherit' })
     }).catch(function (err) {
       console.error('err', err)
     })
